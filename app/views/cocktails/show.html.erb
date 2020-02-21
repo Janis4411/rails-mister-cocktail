@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "adam-jaime-YeH5EIRFCIs-unsplash.jpg" %>');">
+<div class="banner_1" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "adam-jaime-YeH5EIRFCIs-unsplash.jpg" %>');">
     <div class="container">
      <h1><%= @cocktail.name %></h1>
     </div>
@@ -16,8 +16,10 @@
   <% @cocktail.doses.each do |dose| %>
   <tr>
     <td><%= dose.description %></td>
+    <div class="ingredient">
     <td><%= dose.ingredient.name %></td>
-    <td><%= link_to 'Delete', dose, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </div>
+    <td><%= link_to 'Delete', dose, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-gradient"%></td>
   </tr>
   <% end %>
  </tbody>
@@ -27,10 +29,22 @@
 <p><strong>Add a new dose:</strong></p>
     <%= form.input :description, placeholder: "How much" %>
     <%= form.input :ingredient_id, collection: @ingredients %>
-    <%= form.button :submit, class:"btn btn-primary"%>
+    <%= form.button :submit, class:"btn btn-gradient"%>
   <% end %>
-<br>
-<%= link_to 'Back', cocktails_path %> |
-<br>
-<%= link_to 'New Cocktail', new_cocktail_path(@cocktail) %>
+  <br>
+  <br>
+ <%= link_to "Back", "/cocktails", class: "btn btn-gradient" %>
+    <%= link_to "create a new cocktail", "cocktails/new", class: "btn btn-gradient" %>
+</div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
 </div>
